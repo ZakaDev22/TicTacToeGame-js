@@ -1,7 +1,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #bcbcec;
+    background-color: #e3ecbccc;
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -12,6 +12,14 @@ h1 {
     color: #333;
     margin-bottom: 20px;
 }
+
+header div  {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    background-color: #709e4a;
+    border-radius: 20px;
+}   
 
 main {
     display: flex;

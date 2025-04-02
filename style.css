@@ -13,13 +13,28 @@ h1 {
     margin-bottom: 20px;
 }
 
-header div  {
+header div , header  {
+    color: #fff;
     margin: 5px;
     padding: 5px;
     text-align: center;
     background-color: #709e4a;
     border-radius: 20px;
-}   
+}  
+h2 {
+    color: #cd0101;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-shadow: 5px 5px 5px #000;
+} 
+span {
+    color: #000;
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-shadow: 5px 5px 5px #fff;
+}
 
 main {
     display: flex;

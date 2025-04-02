@@ -22,4 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    let resetBtn = document.getElementById("restart");
+    resetBtn.addEventListener("click", function() {
+        btns.forEach(function(btn) {
+            btn.innerHTML = ""; // Clear all boxes
+        });
+        GameTurnMode = 'x'; // Reset to player 'x'
+        GameOver = false; // Reset game over flag
+    });
+
 });

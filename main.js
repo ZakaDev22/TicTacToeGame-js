@@ -1,63 +1,65 @@
-document.addEventListener("DOMContentLoaded", function () {
-	
-    let GameTurnMode = 'x'; // 'x' or 'o'
+class TicTacToe {
+    constructor() {
+        this.GameTurnMode = 'x';
+        this.GameOver = false;
+        this.btns = document.querySelectorAll(".btnBox");
+        this.resetBtn = document.getElementById("restart");
+        this.init();
+    }
 
-    let GameOver = false; // Game over flag
+    init() {
+        this.btns.forEach(btn => {
+            btn.addEventListener("click", () => this.handleClick(btn));
+        });
+        this.resetBtn.addEventListener("click", () => this.resetGame());
+    }
 
-    // Function to check for a win condition
-    function CheckWinCondition() {
-        let btns = document.querySelectorAll(".btnBox");
-        let winConditions = [
-            [0, 1, 2], [3, 4, 5], [6, 7, 8], // Horizontal
-            [0, 3, 6], [1, 4, 7], [2, 5, 8], // Vertical
-            [0, 4, 8], [2, 4, 6] // Diagonal
+    handleClick(btn) {
+        if (btn.innerHTML !== "" || this.GameOver) return;
+        btn.innerHTML = this.GameTurnMode;
+        this.GameTurnMode = this.GameTurnMode === 'x' ? 'o' : 'x';
+        this.checkWinCondition();
+    }
+
+    checkWinCondition() {
+        const winConditions = [
+            [0, 1, 2], [3, 4, 5], [6, 7, 8],
+            [0, 3, 6], [1, 4, 7], [2, 5, 8],
+            [0, 4, 8], [2, 4, 6]
         ];
-        
+
         for (let condition of winConditions) {
-            if (btns[condition[0]].innerHTML === btns[condition[1]].innerHTML && 
-                btns[condition[1]].innerHTML === btns[condition[2]].innerHTML && 
-                btns[condition[0]].innerHTML !== "") {
-                alert(btns[condition[0]].innerHTML + " wins!");
-                GameOver = true; // Set game over flag
+            const [a, b, c] = condition;
+            if (this.btns[a].innerHTML === this.btns[b].innerHTML &&
+                this.btns[b].innerHTML === this.btns[c].innerHTML &&
+                this.btns[a].innerHTML !== "") {
+                this.displayMessage(`${this.btns[a].innerHTML} wins!`);
+                this.GameOver = true;
                 return;
             }
         }
-        
-        // Check for draw condition
-        let isDraw = Array.from(btns).every(btn => btn.innerHTML !== "");
-        if (isDraw) {
-            alert("It's a draw!");
-            GameOver = true; // Set game over flag
+
+        if (Array.from(this.btns).every(btn => btn.innerHTML !== "")) {
+            this.displayMessage("It's a draw!");
+            this.GameOver = true;
         }
     }
 
-    function HandleClickEvent(btnID)
-    {
-        let btnBox = document.getElementById(btnID);
-        if (btnBox.innerHTML != "" || GameOver) {
-            return; // Ignore clicks on already filled boxes or if game is over
-        }
-        btnBox.innerHTML = GameTurnMode; // Set the box to the current player's symbol
-        
-        GameTurnMode = GameTurnMode === 'x' ? 'o' : 'x'; // Switch player
-
-        CheckWinCondition(); // Check for win or draw after each move
+    resetGame() {
+        this.btns.forEach(btn => btn.innerHTML = "");
+        this.GameTurnMode = 'x';
+        this.GameOver = false;
+        this.displayMessage("");
     }
 
-    let btns = document.querySelectorAll(".btnBox");
-    btns.forEach(function(btn) {
-        btn.addEventListener("click", function() {
-            HandleClickEvent(btn.id);
-        });
-    });
+    displayMessage(msg) {
+        const messageArea = document.getElementById("message");
+        if (messageArea) {
+            messageArea.innerText = msg;
+        } else {
+            alert(msg);
+        }
+    }
+}
 
-    let resetBtn = document.getElementById("restart");
-    resetBtn.addEventListener("click", function() {
-        btns.forEach(function(btn) {
-            btn.innerHTML = ""; // Clear all boxes
-        });
-        GameTurnMode = 'x'; // Reset to player 'x'
-        GameOver = false; // Reset game over flag
-    });
-
-});
+document.addEventListener("DOMContentLoaded", () => new TicTacToe());

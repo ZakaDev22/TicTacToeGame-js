@@ -57,23 +57,23 @@ class TicTacToe {
         }
 
         if (Array.from(this.btns).every(btn => btn.innerHTML !== "")) {
-            this.messageArea.innerHTML = "It's a draw!";
             this.btns.forEach(btn => btn.style.backgroundColor = "red");
-            this.displayMessage();
+            this.displayMessage("It's a draw!");
         }
     }
 
     resetGame() {
-       this.displayMessage();
+       this.displayMessage("Resetting The game");
     }
 
-    displayMessage() {
-        setInterval(() => {
+    displayMessage(message) {
+        this.messageArea.innerHTML = message;
+        let interval = setInterval(() => {
+            this.messageArea.innerHTML += ".";
+        }, 1000);
 
-            messageArea.innerHTML += '.';
-        }
-            , 1000);
         setTimeout(() => {
+            clearInterval(interval);
             location.reload();
         }, 3000);
     }

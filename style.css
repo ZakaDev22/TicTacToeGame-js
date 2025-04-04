@@ -1,15 +1,19 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #e3ecbccc;
+    background-color: #333;
     margin: 0;
     padding: 0;
     height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 h1 {
     text-align: center;
-    color: #333;
+    color: #ffffff;
     margin-bottom: 20px;
 }
 
@@ -18,7 +22,7 @@ header div , header  {
     margin: 5px;
     padding: 5px;
     text-align: center;
-    background-color: #709e4a;
+    background-color: #222;
     border-radius: 20px;
 }  
 h2 {
@@ -29,39 +33,34 @@ h2 {
     text-shadow: 5px 5px 5px #000;
 } 
 span {
-    color: #000;
+    color: #ffffff;
     font-size: 2rem;
     font-weight: bold;
     letter-spacing: 5px;
-    text-shadow: 5px 5px 5px #fff;
-}
-
-main {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 90%;
+    text-shadow: 5px 5px 5px #d0ff00;
 }
 
 .container {
     height: 90%;
     display: grid;
-    grid-template-columns: repeat(3, 150px);
-    grid-template-rows: repeat(3, 150px);
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
     gap: 5px;
+    margin-top: 10px;
 }
 
 .btnBox {
-    width: 150px;
-    height: 150px;
-    background-color: #c09f9f;
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    background-color: #ac9c9c;
     border: 2px solid #333;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 4rem;
     font-weight: bold;
+    font-family: cursive sans-serif;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -71,17 +70,9 @@ main {
 }
 
 
-/* Game status styles */
-#status {
-    margin-top: 20px;
-    text-align: center;
-    font-size: 1.2rem;
-    color: #555;
-}
-
 /* Button styles */
 button {
-    margin-top: 20px;
+    margin-bottom: 10px;
     padding: 10px 20px;
     font-size: 1rem;
     color: #fff;

@@ -2,9 +2,20 @@ class TicTacToe {
     constructor() {
         this.GameTurnMode = 'x';
         this.GameOver = false;
-        this.btns = document.querySelectorAll(".btnBox");
         this.resetBtn = document.getElementById("restart");
+
+        this.CreateButtons();
+        this.btns = document.querySelectorAll(".btnBox");
         this.init();
+    }
+
+    CreateButtons() {
+        for (let i = 0; i < 9; i++) {
+            const btn = document.createElement("div");
+            btn.className = "btnBox";
+            btn.innerHTML = "";
+            document.querySelector(".container").appendChild(btn);
+        }
     }
 
     init() {

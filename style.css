@@ -11,12 +11,6 @@ body {
     align-items: center;
 }
 
-h1 {
-    text-align: center;
-    color: #ffffff;
-    margin-bottom: 20px;
-}
-
 header div , header  {
     color: #fff;
     margin: 5px;
@@ -24,6 +18,7 @@ header div , header  {
     text-align: center;
     background-color: #222;
     border-radius: 20px;
+    width: 80%;
 }  
 h2 {
     color: #cd0101;
@@ -85,4 +80,19 @@ button {
 
 button:hover {
     background-color: #0056b3;
+}
+
+@media screen and (max-width: 410px) {
+    .container {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+        gap: 5px;
+    }
+
+    .btnBox {
+        width: 80px;
+        height: 80px;
+        font-size: 3rem;
+    }
+    
 }

@@ -9,6 +9,8 @@ class TicTacToe {
         this.init();
     }
 
+    messageArea = document.getElementById("message");
+
     CreateButtons() {
         for (let i = 0; i < 9; i++) {
             const btn = document.createElement("div");
@@ -46,30 +48,34 @@ class TicTacToe {
                 this.btns[a].innerHTML !== "") {
                 this.displayMessage(`${this.btns[a].innerHTML} wins!`);
                 this.GameOver = true;
+                this.btns[a].style.backgroundColor = "green";
+                this.btns[b].style.backgroundColor = "green";
+                this.btns[c].style.backgroundColor = "green";
+               
                 return;
             }
         }
 
         if (Array.from(this.btns).every(btn => btn.innerHTML !== "")) {
-            this.displayMessage("It's a draw!");
-            this.GameOver = true;
+            this.messageArea.innerHTML = "It's a draw!";
+            this.btns.forEach(btn => btn.style.backgroundColor = "red");
+            this.displayMessage();
         }
     }
 
     resetGame() {
-        this.btns.forEach(btn => btn.innerHTML = "");
-        this.GameTurnMode = 'x';
-        this.GameOver = false;
-        this.displayMessage("");
+       this.displayMessage();
     }
 
-    displayMessage(msg) {
-        const messageArea = document.getElementById("message");
-        if (messageArea) {
-            messageArea.innerText = msg;
-        } else {
-            alert(msg);
+    displayMessage() {
+        setInterval(() => {
+
+            messageArea.innerHTML += '.';
         }
+            , 1000);
+        setTimeout(() => {
+            location.reload();
+        }, 3000);
     }
 }
 
